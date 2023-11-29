@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <h1>Aula 01 - Introdução ao JavaScript</h1>
 
     <h2>O que é JavaScript</h2>
@@ -23,14 +25,37 @@
     </script>
 
     <script>
-        window.alert("Olá Mundo!");
+        // window.alert("Olá Mundo!");
     </script>
 
     <div id="textoAqui">AQUI É O INNER HTML</div>
     <script>
-        document.getElementById("textoAqui").innerHTML = "Olá Inner HTML"
+        document.getElementById("textoAqui").innerHTML = "Olá Inner HTML";
+    </script>
+
+    <!-- INPUTS PARA O JAVASCRIPT -->
+    <script>
+    //    var nome = prompt("Informe o seu nome:");
+    //    console.log("Nome digitado: " + nome);
+    </script>
+
+    <script>
+        // var confimacao = confirm("Deseja Continuar?");
+        // console.log("Resposta: " + confimacao);
+    </script>
+
+
+
+    <input id="campoTexto" type="text" placeholder="Digite algo...">
+    <button onclick="obterTexto()">Obter Texto</button>
+    <script>
+        function obterTexto() {
+            var texto = document.getElementById("campoTexto").value;
+            console.log("texto digitado: " + texto);
+        }
     </script>
 
 
 </body>
+
 </html>
