@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+
+    <h1>Desafio - Quiz de Conhecimentos Gerais</h1>
+
+    <form>
+        <h3>Pergunta 1: Qual é a capital do Brasil?</h3>
+        <input type="text" id="resposta1" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 2: Qual é o maior oceano do mundo?</h3>
+        <input type="text" id="resposta2" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 3: Quem escreveu 'Romeu e Julieta'?</h3>
+        <input type="text" id="resposta3" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 4: Qual o símbolo químico do ouro?</h3>
+        <input type="text" id="resposta4" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 5: Em que ano ocorreu a independencia do Brasil?</h3>
+        <input type="text" id="resposta5" placeholder="Sua resposta..." required>
+    </form>
+
+    <br>
+    <button type="button" onclick="verificarRespostas()">Verificar Respostas</button>
+
+    <script>
+        function verificarRespostas() {
+            let pontuacao = 0;
+            let resultadoDiv = document.getElementById("resultado");
+
+            if (resposta1 === "Brasilia") {
+                pontuacao++;
+            }
+            if (resposta2 === "Oceano Pacífico") {
+                pontuacao++;
+            }
+            if (resposta3 === "William Shakespeare") {
+                pontuacao++;
+            }
+            if (resposta4 === "Au") {
+                pontuacao++;
+            }
+            if (resposta5 === "1822") {
+                pontuacao++;
+            }
+
+            let pontos = resposta1 + resposta2 + resposta3 + resposta4 + resposta5;
+
+            //gudardar respostas em variáveis
+
+            //if (resposta correta) pontuacao++;
+
+            resultadoDiv.innerHTML = "<h2>Sua pontuação: " + pontos + "</h2>";
+        }
+    </script>
+
+</body>
+
+</html>
