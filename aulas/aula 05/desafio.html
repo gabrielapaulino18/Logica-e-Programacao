@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Desafio - Tempo de Voltas</h1>
+    
+<script>
+    
+    let totalDeVoltas = prompt("Quantidade de voltas?");
+
+    for(let i = 0; i < totalDeVoltas; i++) {
+        document.write('<input type="Number" id="volta${i}" name="volta${i}" required><br>')
+        document.write('<label for="volta${i}">Tempo de Volta ${i} (segundos): </label>')
+    }
+
+    document.write('<button onclick="exibirResultados()">Exibir Resultados</button>')
+
+    function exibirResultados() {
+        let tempos = [];
+
+        // obter os tempos das voltas
+        for(let i = 1; i <= totalDeVoltas; i++) {
+            let tempo = parseInt(document.getElementById("voltas${i}"),value);
+
+            tempos.push(tempo);
+        }
+    }
+
+</script>
+
+</body>
+</html>
