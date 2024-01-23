@@ -5,6 +5,29 @@ class MaterialBibliografico {
         this.disponivel = true;
     }
 
+    realizarEmprestimo() {
+        if (this.disponivel == true) {
+            this.disponivel = false;
+            return true; //Emprestimo realizado com sucesso
+        } else if (this.disponivel == false) {
+            return false; //Material ja emprestado
+        }
+    }
+
+    realizarDevolucao() {
+        if (this.disponivel == false) {
+            this.disponivel = true;
+            return true; //Devolução realizada com sucesso
+        }else {
+            return false; //Material já devolvido previamente
+        }
+    }
+
+    realizarDevolucao2 (){
+        if(this.disponivel){
+            return false;
+        }
+    }
 }
 
 class Livro extends MaterialBibliografico {
