@@ -29,6 +29,14 @@ class Livro extends MaterialBibliografico {
         super(titulo, autor);
         this.genero = genero;
     }
+
+    renomearAutor(novoNome) {
+        this.autor = novoNome;
+    }
+
+    alterarGenero(novoGenero) {
+        this.genero = novoGenero;
+    }
 }
 
 class Revista extends MaterialBibliografico {
