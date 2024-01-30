@@ -2,12 +2,12 @@ class MaterialBibliografico {
     constructor(titulo, autor) {
         this.titulo = titulo;
         this.autor = autor;
-        this.disponivel = true;
+        this._disponivel = true;
     }
 
     realizarEmprestimo() {
-        if (this.disponivel) {
-            this.disponivel = false;
+        if (this._disponivel) {
+            this._disponivel = false;
             return true; //Emprestimo realizado com sucesso
         } else {
             return false; //Material já emprestado
@@ -15,12 +15,23 @@ class MaterialBibliografico {
     }
 
     realizarDevolucao() {
-        if(!this.disponivel) {
-            this.disponivel = true;
+        if(!this._disponivel) {
+            this._disponivel = true;
             return true; //Devolução realizada com sucesso
         } else {
             return false; //Material já devolvido previamente
         }
+    }
+    
+    renomearAutor(novoNome) {
+        if(novoNome == "") {
+            return alert("Não pode cadastrar nome vazio")
+        }
+        this.autor = novoNome;
+    }
+
+    toString() {
+        return `${this.titulo} - ${this.autor}`;
     }
 }
 
@@ -30,12 +41,12 @@ class Livro extends MaterialBibliografico {
         this.genero = genero;
     }
 
-    renomearAutor(novoNome) {
-        this.autor = novoNome;
-    }
-
     alterarGenero(novoGenero) {
         this.genero = novoGenero;
+    }
+
+    toString() {
+        return `${super.toString()} ${this.genero}`;
     }
 }
 
@@ -49,7 +60,6 @@ class Revista extends MaterialBibliografico {
 function realizarAcao(acao) {
     const selectLivros = document.getElementById("livros");
     const selectedIndex = selectLivros.selectedIndex;
-
 
     if(selectedIndex === 0) {
         alert("Por favor, selecione um livro válido.");
@@ -76,7 +86,7 @@ const livros = [
     new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Fantasia"),
     new Livro("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Fantasia"),
     new Livro("Crepúsculo", "Stephenie Meyer", "Romance"),
-    new Revista("National Geographic", "National Geographic Society", "Ciência")
+    new Revista("National Geographic", "National Geographic Society", "Ciência"),
 ];
 
 const selectLivros = document.getElementById("livros");
@@ -88,3 +98,6 @@ for(let i = 0; i < livros.length; i++) {
     option.text = livro.titulo;
     selectLivros.add(option);
 }
+
+console.log(livros[0].toString());
+console.log(livros[3].toString());
