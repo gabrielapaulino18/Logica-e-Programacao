@@ -31,6 +31,7 @@ class Personagem {
         this.posicao = posicao;
         this.vida = vida;
         this.vivo = vivo;
+        this.vidaMaxima = vida;
     }
 
     morrer() {
@@ -60,17 +61,24 @@ class Personagem {
             console.log("Não é possível atacar na condição de morto!");
         }
     }
+
+    recuperarVida(vidaRecebida, personagem){
+        personagem.vida += vidaRecebida;        
+
+        if(personagem.vida > personagem.vidaMaxima) {
+            personagem.vida = personagem.vidaMaxima;
+        }
+
+        console.log(`${this.nome} recuperou a vida de ${personagem.nome} um total de ${vidaRecebida}, ficando com ${personagem.vida} de vida`);
+    }
 }
 
 let personagem1 = new Personagem("Arthur", 10, 12, 100, 1, true);
-let personagem2 = new Personagem("Gendalf", 12, 8, 85, 1);
+let personagem2 = new Personagem("Gendalf", 2, 8, 85, 1);
 
 console.log(personagem1);
 console.log(personagem2);
 
 console.log(personagem1.atacar(personagem2));
 console.log(personagem2.atacar(personagem1));
-
-while(personagem1.vivo) {
-    personagem2.atacar(personagem1);
-}
+console.log(personagem1.recuperarVida(15, personagem2));
