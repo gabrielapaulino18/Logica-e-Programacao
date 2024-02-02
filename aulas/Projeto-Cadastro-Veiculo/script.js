@@ -2,11 +2,13 @@
 #Parte 1:
     - Crie uma classe Veiculo
     - Adicione as propriedades: marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL
-    - Adicione um metodo calcularDistanciaMaxia, que retornará a autonomia * capacidadeTanque
+    - Adicione um metodo calcularDistanciaMaxima, que retornará a autonomia * capacidadeTanque
     - Adicione um metodo exibirDetalhes, que retornará os dados concatenados de:
         * marca, modelo, cor, preco.toFixed(2)
-*/
 
+#Parte 2:
+    - Crie uma função cadastrarVeiculo
+*/
 class Veiculo {
     constructor(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL) {
         this.marca = marca;
@@ -47,15 +49,38 @@ function cadastrarVeiculo() {
     veiculos.push(veiculo);
 
     // Atualiza a exibição
-    console.log(veiculos);
+    exibirVeiculos()
 
     // Limpar formulário
     document.getElementById("veiculoForm").reset();
 }
 
+function exibirVeiculos() {
+    const veiculosList = document.getElementById("veiculosList");
+    // Limpar a lista antes de exibir os veículos
+    veiculosList.innerHTML = "";
 
-// veiculos.push(new Veiculo("fiat", "uno", 60000, "branco", 16, 90, "www.url.com"));
-// veiculos.push(new Veiculo("fiat", "palio", 90000, "vermelho", 14, 90, "www.url88.com"));
-// veiculos.push(new Veiculo("chrevrolet", "cruze", 120000, "amarelo", 11, 90, "www.url45.com"));
+    for (let i = 0; i < veiculos.length; i++) {
+        const veiculoItem = document.createElement("li");
+        const veiculoCard = criarVeiculoCard(veiculos[i]);
+        veiculosList.appendChild(veiculoCard);
+        veiculosList.appendChild(veiculoItem);
+    }
+}
 
-// console.log(veiculos);
+function criarVeiculoCard(veiculo) {
+    const veiculoCard = document.createElement("div");
+    veiculoCard.className = "veiculo-card";
+
+    const imagemVeiculo = document.createElement("img");
+    imagemVeiculo.src = veiculo.imagemURL;
+    imagemVeiculo.className = "veiculo-imagem";
+    imagemVeiculo.alt = `${veiculo.marca} ${veiculo.modelo}`;
+    veiculoCard.appendChild(imagemVeiculo);
+
+    const detalhesVeiculo = document.createElement("div");
+    detalhesVeiculo.textContent = veiculo.exibirDetalhes() + ` - Distância máxima: ${veiculo.calcularDistanciaMaxima()} km`;
+    veiculoCard.appendChild(detalhesVeiculo);
+
+    return veiculoCard;
+}

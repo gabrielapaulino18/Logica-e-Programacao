@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Veiculos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Cadastro de Veículos</h1>
 
-    <h1>Cadastro de Veiculos</h1>
-
-    <form id="veiculosForm">
+    <form id="veiculoForm">
         <label for="marca">Marca:</label>
         <input type="text" id="marca" required>
 
@@ -32,9 +32,10 @@
         <input type="text" id="imagemURL" required>
 
         <button type="button" onclick="cadastrarVeiculo()">Cadastrar Veiculo</button>
-
     </form>
 
+    <h2>Veículos Cadastrados</h2>
+    <ul id="veiculosList"></ul>
 
     <script src="script.js"></script>
 </body>
